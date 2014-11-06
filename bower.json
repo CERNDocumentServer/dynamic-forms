@@ -1,0 +1,37 @@
+{
+  "name": "dynamic-forms",
+  "version": "0.0.2",
+  "homepage": "https://github.com/CERNDocumentServer/dynamic-forms",
+  "authors": [
+    "CDS Team <cds-support@cern.ch>"
+  ],
+  "main": [
+    "dist/jquery.dynamic-forms.js"
+  ],
+  "description": "User dynamic-forms plugin",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "license": "Revised BSD",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "~2.0.0",
+    "jquery": "~2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CERNDocumentServer/dynamic-forms.git"
+  },
+  "devDependencies": {
+    "qunit": "~1.15.0"
+  }
+}
