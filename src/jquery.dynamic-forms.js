@@ -30,6 +30,7 @@
         input: "<label for='{{name}}'>{{label}}</label>" +
               "<input type='text' name='{{name}}' value='{{value}}'" +
               " placeholder='{{placeholder}}' />",
+        hidden: "<input type='hidden' name='{{name}}' value='{{value}}'",
         textarea: "<label for='{{name}}'>{{label}}</label>" +
               "<textarea name='{{name}}'></textarea>",
         select: "<label for='{{name}}'>{{label}}</label>" +
