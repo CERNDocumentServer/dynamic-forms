@@ -59,7 +59,7 @@
     function Plugin ( element, options ) {
       this.element = element;
       this.$el = $(element);
-      this.options = $.extend( {}, defaults, options );
+      this.options = $.extend(true, {}, defaults, options );
       this._defaults = defaults;
       this._name = pluginName;
       this.init();

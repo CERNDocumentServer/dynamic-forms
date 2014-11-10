@@ -1,4 +1,4 @@
-/*! Dynamic forms - v0.0.4 - 2014-11-10
+/*! Dynamic forms - v0.0.5 - 2014-11-10
 * https://github.com/CERNDocumentServer/dynamic-forms
 * Copyright (c) 2014 CERN; Licensed Revised, BSD */
 ;(function ( $, window, document, undefined ) {
@@ -54,7 +54,7 @@
     function Plugin ( element, options ) {
       this.element = element;
       this.$el = $(element);
-      this.options = $.extend( {}, defaults, options );
+      this.options = $.extend(true, {}, defaults, options );
       this._defaults = defaults;
       this._name = pluginName;
       this.init();
