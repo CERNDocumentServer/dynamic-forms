@@ -1,4 +1,4 @@
-/*! Dynamic forms - v0.0.3 - 2014-11-10
+/*! Dynamic forms - v0.0.4 - 2014-11-10
 * https://github.com/CERNDocumentServer/dynamic-forms
 * Copyright (c) 2014 CERN; Licensed Revised, BSD */
 ;(function ( $, window, document, undefined ) {
@@ -18,19 +18,20 @@
         loaded: function(){},
       },
       templates: {
-        wrapper: "<div class='"+pluginName+"-wrapper'>{{{description}}}{{{messages}}} "+
-                    "{{{loading}}} {{{content}}}</div>",
+        wrapper: "<div class='"+pluginName+"-wrapper'>{{{messages}}} "+
+                    "{{{loading}}} {{{description}}}{{{content}}}</div>",
         messages: "<div class='"+pluginName+"-messages'></div>",
         loading: "<div class='"+pluginName+"-loading'></div>",
         input: "<label for='{{name}}'>{{label}}</label>" +
               "<input type='text' name='{{name}}' value='{{value}}'" +
               " placeholder='{{placeholder}}' />",
+        hidden: "<input type='hidden' name='{{name}}' value='{{value}}' />",
         textarea: "<label for='{{name}}'>{{label}}</label>" +
               "<textarea name='{{name}}'></textarea>",
         select: "<label for='{{name}}'>{{label}}</label>" +
               "<select name='{{name}}'>" +
               "{{#each values}}" +
-              "<option name='{{value}}'>{{option}}</option>" +
+              "<option value='{{value}}'>{{option}}</option>" +
               "{{/each}}" +
               "</select>",
         form:  "<form class='"+pluginName+"-form'>{{{content}}} "+
@@ -165,7 +166,7 @@
             label: 'Save'
           });
           var _description = description({
-            description: that.options.data.description
+            description: that.options.messages.description
           });
           var _wrapper = wrapper({
             description: _description,

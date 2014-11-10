@@ -37,6 +37,13 @@
             placeholder: "Placeholder",
         },
         {
+            type: "hidden",
+            label: "A nice label",
+            value: "test",
+            name: "title",
+            placeholder: "Placeholder",
+        },
+        {
             type: "textarea",
             value: "test",
             label: "A nice label",
@@ -66,8 +73,7 @@
             content: data
         }
     });
-
-    var test_html = "<div class=\"dynamicForms-description\"></div><div class=\"dynamicForms-messages\"></div> <div class=\"dynamicForms-loading\"></div> <form class=\"dynamicForms-form\"><label for=\"title\">A nice label</label><input type=\"text\" name=\"title\" value=\"test\" placeholder=\"Placeholder\"><label for=\"description\">A nice label</label><textarea name=\"description\"></textarea><label for=\"select description\">A nice label</label><select name=\"select description\"><option name=\"en\">English</option><option name=\"fr\">French</option></select> <button class=\"dynamicForms-form-submit\" type=\"submit\">Save</button></form>";
+    var test_html = "<div class=\"dynamicForms-messages\"></div> <div class=\"dynamicForms-loading\"></div> <div class=\"dynamicForms-description\"></div><form class=\"dynamicForms-form\"><label for=\"title\">A nice label</label><input type=\"text\" name=\"title\" value=\"test\" placeholder=\"Placeholder\"><input type=\"hidden\" name=\"title\" value=\"test\"><label for=\"description\">A nice label</label><textarea name=\"description\"></textarea><label for=\"select description\">A nice label</label><select name=\"select description\"><option value=\"en\">English</option><option value=\"fr\">French</option></select> <button class=\"dynamicForms-form-submit\" type=\"submit\">Save</button></form>";
     strictEqual(test_element.html(), test_html, 'should be equals');
   });
 }(jQuery));
