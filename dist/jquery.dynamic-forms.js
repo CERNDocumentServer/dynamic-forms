@@ -1,4 +1,4 @@
-/*! Dynamic forms - v0.0.5 - 2014-11-10
+/*! Dynamic forms - v0.0.6 - 2014-11-12
 * https://github.com/CERNDocumentServer/dynamic-forms
 * Copyright (c) 2014 CERN; Licensed Revised, BSD */
 ;(function ( $, window, document, undefined ) {
@@ -21,6 +21,7 @@
         wrapper: "<div class='"+pluginName+"-wrapper'>{{{messages}}} "+
                     "{{{loading}}} {{{description}}}{{{content}}}</div>",
         messages: "<div class='"+pluginName+"-messages'></div>",
+        text: "<div class='"+pluginName+"-text'>{{{value}}}</div>",
         loading: "<div class='"+pluginName+"-loading'></div>",
         input: "<label for='{{name}}'>{{label}}</label>" +
               "<input type='text' name='{{name}}' value='{{value}}'" +
@@ -99,13 +100,13 @@
         // Call the callback
         this.options.callbacks.success.call(this, this.$el, data, response, this._render);
       },
-      error: function(jqXHR, textStatus, error){
+      error: function(error){
         var _message = Handlebars.compile(this.options.templates.error);
         this.message(_message({
-          message: this.options.messages.error
+          message: (error.message !== undefined) ? error.message : this.options.messages.error
         }));
         // Call the callback
-        this.options.callbacks.error.call(this, this.$el, jqXHR, textStatus, error, this._render);
+        this.options.callbacks.error.call(this, this.$el, error, this._render);
       },
       // #### Handlers
       // >>>> Private functions
@@ -118,8 +119,8 @@
         .done(function(response){
             deferred.resolve(response);
         })
-        .fail(function(jqXHR, textStatus, errorThrown){
-            deferred.reject(jqXHR, textStatus, errorThrown);
+        .fail(function(response){
+            deferred.reject(response);
         });
         return deferred.promise();
       },
@@ -133,9 +134,13 @@
           that._save(data)
         ).then(
         function(response){
-          that.success(data, response);
-        }, function(jqXHR, textStatus, errorThrown){
-          that.error(jqXHR ,textStatus, errorThrown);
+          if(response.error){
+            that.error(response);
+          }else{
+            that.success(data, response);
+          }
+        }, function(response){
+          that.error(response);
         }
         ).always(function(){
           that.unloading();

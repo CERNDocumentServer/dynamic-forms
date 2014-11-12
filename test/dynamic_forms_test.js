@@ -29,51 +29,55 @@
   test('is rendering properly', function() {
     expect(1);
     var data = [
-        {
-            type: "input",
-            label: "A nice label",
-            value: "test",
-            name: "title",
-            placeholder: "Placeholder",
-        },
-        {
-            type: "hidden",
-            label: "A nice label",
-            value: "test",
-            name: "title",
-            placeholder: "Placeholder",
-        },
-        {
-            type: "textarea",
-            value: "test",
-            label: "A nice label",
-            name: "description",
-            placeholder: "Placeholder",
-        },
-        {
-            type: "select",
-            label: "A nice label",
-            name: "select description",
-            values:[
-            {
-                value: "en",
-                option: "English"
-            },
-            {
-                value: "fr",
-                option: "French"
-            }
-            ]
-        }
+      {
+        type: "input",
+        label: "A nice label",
+        value: "test",
+        name: "title",
+        placeholder: "Placeholder",
+      },
+      {
+        type: "hidden",
+        label: "A nice label",
+        value: "test",
+        name: "title",
+        placeholder: "Placeholder",
+      },
+      {
+        type: "textarea",
+        value: "test",
+        label: "A nice label",
+        name: "description",
+        placeholder: "Placeholder",
+      },
+      {
+        type: "select",
+        label: "A nice label",
+        name: "select description",
+        values:[
+          {
+            value: "en",
+            option: "English"
+          },
+          {
+            value: "fr",
+            option: "French"
+          }
+        ]
+      },
+      {
+        type: "text",
+        value: "A disclaimer"
+      }
     ];
 
     var test_element = this.elem.dynamicForms({
         'url': 'http://example.com',
         data:{
-            content: data
+          content: data
         }
     });
-    var test_html = "<div class=\"dynamicForms-messages\"></div> <div class=\"dynamicForms-loading\"></div> <div class=\"dynamicForms-description\"></div><form class=\"dynamicForms-form\"><label for=\"title\">A nice label</label><input type=\"text\" name=\"title\" value=\"test\" placeholder=\"Placeholder\"><input type=\"hidden\" name=\"title\" value=\"test\"><label for=\"description\">A nice label</label><textarea name=\"description\"></textarea><label for=\"select description\">A nice label</label><select name=\"select description\"><option value=\"en\">English</option><option value=\"fr\">French</option></select> <button class=\"dynamicForms-form-submit\" type=\"submit\">Save</button></form>";
+    var test_html = "<div class=\"dynamicForms-messages\"></div> <div class=\"dynamicForms-loading\"></div> <div class=\"dynamicForms-description\"></div><form class=\"dynamicForms-form\"><label for=\"title\">A nice label</label><input type=\"text\" name=\"title\" value=\"test\" placeholder=\"Placeholder\"><input type=\"hidden\" name=\"title\" value=\"test\"><label for=\"description\">A nice label</label><textarea name=\"description\"></textarea><label for=\"select description\">A nice label</label><select name=\"select description\"><option value=\"en\">English</option><option value=\"fr\">French</option></select><div class=\"dynamicForms-text\">A disclaimer</div> <button class=\"dynamicForms-form-submit\" type=\"submit\">Save</button></form>";
     strictEqual(test_element.html(), test_html, 'should be equals');
   });
 }(jQuery));
