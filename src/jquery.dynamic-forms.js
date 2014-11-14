@@ -10,6 +10,9 @@
     // Create the defaults once
     var pluginName = "dynamicForms",
     defaults = {
+      labels:{
+        submit: "Submit",
+      },
       messages:{
         description: '',
         error: 'Error',
@@ -173,7 +176,7 @@
         ).done(function(){
           var _form = form({
             content: _content,
-            label: 'Save'
+            label: that.options.labels.submit,
           });
           var _description = description({
             description: that.options.messages.description

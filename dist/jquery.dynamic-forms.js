@@ -1,10 +1,13 @@
-/*! Dynamic forms - v0.0.6 - 2014-11-12
+/*! Dynamic forms - v0.0.7 - 2014-11-14
 * https://github.com/CERNDocumentServer/dynamic-forms
 * Copyright (c) 2014 CERN; Licensed Revised, BSD */
 ;(function ( $, window, document, undefined ) {
     // Create the defaults once
     var pluginName = "dynamicForms",
     defaults = {
+      labels:{
+        submit: "Submit",
+      },
       messages:{
         description: '',
         error: 'Error',
@@ -168,7 +171,7 @@
         ).done(function(){
           var _form = form({
             content: _content,
-            label: 'Save'
+            label: that.options.labels.submit,
           });
           var _description = description({
             description: that.options.messages.description
